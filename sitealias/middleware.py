@@ -3,7 +3,7 @@ from django.utils.deprecation import MiddlewareMixin
 from .shortcuts import get_current_site
 
 
-class CurrentAliasedSiteMiddleware(MiddlewareMixin):
+class CurrentSiteMiddleware(MiddlewareMixin):
     """
     Middleware that sets `site` attribute to request object.
     """
