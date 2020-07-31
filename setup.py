@@ -59,6 +59,7 @@ setup(
             'sphinx-bootstrap-theme',
             'sphinx-rtd-theme',
             'sphinx-js',
+            'sphinx-autobuild',
         ],
     }
 )
