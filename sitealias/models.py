@@ -1,5 +1,6 @@
 
 from django.db import models
+from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import gettext_lazy as _
 from django.contrib.sites.models import Site, _simple_domain_name_validator, SiteManager, SITE_CACHE, clear_site_cache
 

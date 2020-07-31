@@ -34,7 +34,7 @@ package_metadata = {
 setup(
     **package_metadata,
     packages=find_packages(),
-    package_data={'sitealiases': ['*.html']},
+    package_data={'sitealias': ['*.html']},
     include_package_data=True,
     python_requires=">=3.6",
     install_requires=[
