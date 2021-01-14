@@ -43,8 +43,8 @@ then add 'sitealias' to your django project's list of apps and run migrate to ge
 ## Roadmap
 
 - [x] Middleware - sitealias.middleware.CurrentSite - mimics to `django.contrib.sites.middleware.CurrentSite` except that it adds current `site` to `request` object site via Sitealias model, before checking the Site table 
-- [x] Shorcut - `from sitealias.shortcuts import get_current_site` - mimics `django.contrib.sites.shortcuts.get_current_site` but checks sitealias table before checking the Site model
-- [] Callables for the ALLOWED_HOSTS setting
+- [x] Shortcut - `from sitealias.shortcuts import get_current_site` - mimics `django.contrib.sites.shortcuts.get_current_site` but checks sitealias table before checking the Site model
+- [] Callables for the ALLOWED_HOSTS setting (perhaps a sublasses of the allowesites django package?? )
     - [] CachedAllowedSitesAndAlias
     - [] AllowedSitesAndAliass ??
 - [] new managers for filtering objects the site ??
