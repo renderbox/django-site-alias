@@ -23,8 +23,12 @@ class SiteAliasManager(SiteManager):
                 SITE_CACHE[host] = host.site                # Use the Alias as the key and add the Alias's Site object to the cache
             return SITE_CACHE[host]
         except SiteAlias.DoesNotExist:
-            return super()._get_site_by_request(request)
-
+            return Site.objects.get_current(request)
+    
+    def get_current(self, request=None):
+        if request:
+            return self._get_site_by_request(request)
+        return Site.objects.get_current(request)
 
 class SiteAlias(models.Model):
     '''
