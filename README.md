@@ -47,8 +47,7 @@ then add 'sitealias' to your django project's list of apps and run migrate to ge
 - [] Callables for the ALLOWED_HOSTS setting (perhaps a sublasses of the allowesites django package?? )
     - [] CachedAllowedSitesAndAlias
     - [] AllowedSitesAndAliass ??
-- [] new managers for filtering objects the site ??
-
+    
 ```python
 INSTALLED_APPS = [
     ...
