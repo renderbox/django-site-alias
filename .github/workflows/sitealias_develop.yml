@@ -3,7 +3,6 @@ name: SiteAlias Develop
 on:
   pull_request:
     branches: 
-      - master
       - develop
 
 jobs:
@@ -32,3 +31,4 @@ jobs:
         python manage.py test sitealias
       env: 
         DJANGO_DEBUG: 1
+        

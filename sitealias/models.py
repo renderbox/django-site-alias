@@ -4,11 +4,6 @@ from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import gettext_lazy as _
 from django.contrib.sites.models import Site, _simple_domain_name_validator, SiteManager, SITE_CACHE, clear_site_cache
 
-
-# from django.core.exceptions import ImproperlyConfigured, ValidationError
-from django.http.request import split_domain_port
-
-
 class SiteAliasManager(SiteManager):
 
     def _get_site_by_request(self, request):
@@ -32,7 +27,8 @@ class SiteAliasManager(SiteManager):
     def get_current(self, request=None):
         if request:
             return self._get_site_by_request(request)
-        return Site.objects.get_current(request)
+        ## This will return the site from settings.SITE_ID
+        return Site.objects.get_current()
 
 class SiteAlias(models.Model):
     '''
@@ -65,12 +61,7 @@ class SiteAlias(models.Model):
 
 def clear_all_aliases_cache(sender, **kwargs):
     site = kwargs['instance']
-    aliases = SiteAlias.objects.filter(site=site)
-    for alias in aliases:
-        try:
-            del SITE_CACHE[alias.domain]
-        except KeyError:
-            pass
+    SITE_CACHE = {}
 
 def clear_alias_cache(sender, **kwargs):
     alias = kwargs['instance']
