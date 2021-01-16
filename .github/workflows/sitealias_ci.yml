@@ -1,13 +1,12 @@
-name: SiteAlias Develop
+name: Site Alias CI
 
 on:
-  pull_request:
-    branches: 
-      - develop
+  push:
+    branches: [ master ]
 
 jobs:
 
-  test:
+  test-and-build:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 1
@@ -29,6 +28,17 @@ jobs:
       run: |
         cd develop
         python manage.py test sitealias
+        python manage.py makemigrations --check --dry-run
       env: 
         DJANGO_DEBUG: 1
-        
+    - name: Install Build Dependencies
+      run: |
+        python -m pip install -e .[build]
+    - name: Build Package
+      run: |
+        python setup.py sdist bdist_wheel
+    - name: Publish a Python distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@v1.1.0
+      with:
+        user: __token__
+        password: ${{ secrets.pypi_password }}
