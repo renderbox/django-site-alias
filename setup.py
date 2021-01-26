@@ -38,7 +38,7 @@ setup(
     include_package_data=True,
     python_requires=">=3.6",
     install_requires=[
-        'Django>=3.0,<3.1',
+        'Django>=3.0,<3.2',
         'dj-database-url',
     ],
     extras_require={
