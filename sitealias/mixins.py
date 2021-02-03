@@ -28,9 +28,6 @@ class PassRequestToFormKwargsMixin:
         return kwargs
 
 class SiteQuerysetMixin:
-    '''
-    Mixin to set a couple of shared path settings
-    '''
     model_to_query = None
 
     def get_queryset(self):
