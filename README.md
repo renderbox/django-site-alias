@@ -40,6 +40,29 @@ pip install django-site-alias
 
 then add 'sitealias' to your django project's list of apps and run migrate to get the new model.  Make sure to also include 'django.contrib.sites' since this is just a wraper around that code.
 
+## Built-in managers
+
+```python
+from sitalias.models import RequestSiteManager
+
+class Model(models.Model):
+ #......
+    objects = RequestSiteManager()
+``` 
+
+Will add the following chainable methods to the objects filter:
+
+```python
+Model.objects.from_site(site)
+```
+or
+
+```python
+Model.objects.from_request(request)
+```
+
+Included manager serves as a suggestion, feel free to build your own implementation.
+
 ## Roadmap
 
 - [x] Middleware - sitealias.middleware.CurrentSite - mimics to `django.contrib.sites.middleware.CurrentSite` except that it adds current `site` to `request` object site via Sitealias model, before checking the Site table 

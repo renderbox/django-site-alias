@@ -31,6 +31,24 @@ class SiteAliasManager(SiteManager):
         ## This will return the site from settings.SITE_ID
         return Site.objects.get_current()
 
+class RequestSiteManager(models.Manager):
+    
+    def __init__(self, field_name="site", m2m=False):
+        super().__init__()
+        self.field_name = field_name
+        self.m2m = m2m
+    
+    def from_site(self, site):
+        queryset = self.filter(**{self.field_name + "__id": site.id})
+        
+        if self.m2m:
+            return queryset.distinct()
+            
+        return queryset
+    
+    def from_request(self, request):
+        return self.from_site(request.site)
+
 class SiteAlias(models.Model):
     '''
     This is meant to be a simple drop in replacement for the Django Site framework with the exception that it manages aliases
