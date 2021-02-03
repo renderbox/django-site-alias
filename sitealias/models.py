@@ -1,4 +1,5 @@
 
+from django.core.validators import URLValidator
 from django.db import models
 from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import gettext_lazy as _
@@ -38,10 +39,10 @@ class SiteAlias(models.Model):
     domain = models.CharField(
         _('domain name'),
         max_length=100,
-        validators=[_simple_domain_name_validator],
+        validators=[URLValidator(schemes=['https'])],
         unique=True,
     )
-    name = models.CharField(_('display name'), max_length=50)
+    name = models.CharField(_('display name'), max_length=50, null=True, blank=True)
     site = models.ForeignKey(Site, verbose_name=_("Parent Site"), on_delete=models.CASCADE)
 
     objects = SiteAliasManager()
