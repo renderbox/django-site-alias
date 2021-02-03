@@ -2,7 +2,8 @@ from sitealias.models import SiteAlias
 from django.test import TestCase, Client, override_settings
 from django.urls import reverse
 from django.core.management import call_command
-from django.contrib.sites.models import SITE_CACHE
+from django.core.exceptions import ValidationError
+from django.contrib.sites.models import SITE_CACHE, Site
 from django.conf import settings
 # Create your tests here.
 
@@ -95,3 +96,10 @@ class SiteSignalTests(TestCase):
         self.assertNotIn(self.alias.domain, SITE_CACHE)
         self.assertNotIn(parent_site, SITE_CACHE)
 
+
+class SiteAliasModelTests(TestCase):
+
+    def test_model_save_with_invalid_domain(self):
+        site = Site.objects.get(pk=1)
+        alias = SiteAlias(domain='invalidurl', site=site)
+        self.assertRaises(ValidationError, alias.full_clean)
