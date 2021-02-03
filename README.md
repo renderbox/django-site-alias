@@ -44,7 +44,7 @@ then add 'sitealias' to your django project's list of apps and run migrate to ge
 
 **SetSiteFromRequestFormValidMixin** - sets the current site to the self.object.site with in the form_valid of any generic editing view
 
-**SiteQuerysetMixin:** - django-rest-framwork view mixin: Filters model by current site found in the request.
+**SiteQuerysetMixin:** - Filters model by current site found in the request using get_queryset method
 
 
 ## Built-in managers
