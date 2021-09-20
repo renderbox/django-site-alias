@@ -47,10 +47,10 @@ setup(
     install_requires=[
         'Django>=3.0,<3.2',
         'dj-database-url',
+        'django-crispy-forms',
     ],
     extras_require={
         'dev': [
-            'django-crispy-forms',
             'django-allauth',
         ],
         'test': [],
