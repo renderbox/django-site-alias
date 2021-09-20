@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load static %}
+
+
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">
+      {% if object %}
+          {% trans 'Edit Alias' %}
+      {% else %}
+      {% trans 'Create Alias' %}
+      {% endif %}
+        </li>
+    </ol>
+  </nav>
+<div class="card">
+    <form class="alias-form mb-0" method="POST">
+        {% csrf_token %}
+    <div class="card-header">
+        <div class="text-grey-800 font-weight-bold mb-0">{% trans 'Create Site Alias' %}</div>
+        <button class="close-btn btn text-success font-weight-bold float-right" data-dismiss="modal"><i class="fas fa-times"></i></button>
+    </div>
+    
+        <div class="card-body">
+            <p class="text-gray-800">
+                {% blocktrans %}
+                You must have access to the Domain Name Registrar information in order to edit the record for a Custom Domain Name to work.
+                {% endblocktrans %}
+            </p>
+            {{ form | crispy }}
+        </div>
+        <div class="card-footer">
+                <input type="submit" name="save" value="{% trans 'Save' %}" class="btn btn-success font-weight-bold float-right" id="submit-id-save">
+                <a
+                href="{% url 'alias-list' %}"
+                class="btn btn-danger"
+              >{% trans 'Cancel' %}</a>
+        </div>
+    </form>
+</div>
+{% endblock content %}
+    
