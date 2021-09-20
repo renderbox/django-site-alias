@@ -95,11 +95,3 @@ class SiteSignalTests(TestCase):
 
         self.assertNotIn(self.alias.domain, SITE_CACHE)
         self.assertNotIn(parent_site, SITE_CACHE)
-
-
-class SiteAliasModelTests(TestCase):
-
-    def test_model_save_with_invalid_domain(self):
-        site = Site.objects.get(pk=1)
-        alias = SiteAlias(domain='invalidurl', site=site)
-        self.assertRaises(ValidationError, alias.full_clean)

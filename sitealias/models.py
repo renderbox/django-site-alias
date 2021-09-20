@@ -57,7 +57,7 @@ class SiteAlias(models.Model):
     domain = models.CharField(
         _('domain name'),
         max_length=100,
-        validators=[URLValidator(schemes=['https'])],
+        validators=[_simple_domain_name_validator],
         unique=True,
     )
     name = models.CharField(_('display name'), max_length=50, null=True, blank=True)
@@ -75,6 +75,9 @@ class SiteAlias(models.Model):
 
     def natural_key(self):
         return (self.domain,)
+    
+    def get_absolute_url(self):
+        return f"/aliases/{self.pk}/update/"
 
 # TODO: Add feature to clear caches on all aliases when a Site is updated or deleted
 
