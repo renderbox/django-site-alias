@@ -39,6 +39,36 @@ pip install django-site-alias
 ```
 
 then add 'sitealias' to your django project's list of apps and run migrate to get the new model.  Make sure to also include 'django.contrib.sites' since this is just a wraper around that code.
+## Builtin View Mixins
+**PassRequestToFormKwargsMixin** - adds the current request to the form kwargs
+
+**SetSiteFromRequestFormValidMixin** - sets the current site to the self.object.site with in the form_valid of any generic editing view
+
+**SiteQuerysetMixin:** - Filters model by current site found in the request using get_queryset method
+
+
+## Built-in managers
+
+```python
+from sitalias.models import RequestSiteManager
+
+class Model(models.Model):
+ #......
+    objects = RequestSiteManager()
+``` 
+
+Will add the following chainable methods to the objects filter:
+
+```python
+Model.objects.from_site(site)
+```
+or
+
+```python
+Model.objects.from_request(request)
+```
+
+Included manager serves as a suggestion, feel free to build your own implementation.
 
 ## Roadmap
 

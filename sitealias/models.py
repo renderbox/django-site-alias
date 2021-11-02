@@ -1,4 +1,5 @@
 
+from django.core.validators import URLValidator
 from django.db import models
 from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import gettext_lazy as _
@@ -30,6 +31,24 @@ class SiteAliasManager(SiteManager):
         ## This will return the site from settings.SITE_ID
         return Site.objects.get_current()
 
+class RequestSiteManager(models.Manager):
+    
+    def __init__(self, field_name="site", m2m=False):
+        super().__init__()
+        self.field_name = field_name
+        self.m2m = m2m
+    
+    def from_site(self, site):
+        queryset = self.filter(**{self.field_name + "__id": site.id})
+        
+        if self.m2m:
+            return queryset.distinct()
+            
+        return queryset
+    
+    def from_request(self, request):
+        return self.from_site(request.site)
+
 class SiteAlias(models.Model):
     '''
     This is meant to be a simple drop in replacement for the Django Site framework with the exception that it manages aliases
@@ -41,7 +60,7 @@ class SiteAlias(models.Model):
         validators=[_simple_domain_name_validator],
         unique=True,
     )
-    name = models.CharField(_('display name'), max_length=50)
+    name = models.CharField(_('display name'), max_length=50, null=True, blank=True)
     site = models.ForeignKey(Site, verbose_name=_("Parent Site"), on_delete=models.CASCADE)
 
     objects = SiteAliasManager()
@@ -56,6 +75,9 @@ class SiteAlias(models.Model):
 
     def natural_key(self):
         return (self.domain,)
+    
+    def get_absolute_url(self):
+        return f"/aliases/{self.pk}/update/"
 
 # TODO: Add feature to clear caches on all aliases when a Site is updated or deleted
 

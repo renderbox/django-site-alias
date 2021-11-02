@@ -1,0 +1,41 @@
+{% extends 'base.html' %} 
+{% load i18n %} 
+
+{% block content %}
+<div class="col">
+  <div class="card mb-5">
+    <form class="alias-form mb-0" method="POST">
+        
+      {% csrf_token %}
+      <div class="card-header">
+        <div class="text-grey-800 font-weight-bold">
+          {% trans 'Delete Site Alias' %}
+        </div>
+    </div>
+    <div class="card-body">
+
+        <p class="text-danger">
+            {% blocktrans %}
+            <strong>WARNING:</strong>
+            You are about to delete this Custom Domain Name, and as a result your
+            CNAME record at your Domain Name Registrar service will no longer
+            function. Please confirm it is also deleted there before proceeding.
+            {% endblocktrans %}
+        </p>
+    </div>
+      <div class="card-footer">
+          <input
+            type="submit"
+            name="save"
+            value="{% trans 'Confirm Delete' %}"
+            class="btn btn-danger float-right"
+          />
+          <a href="{% url 'alias-list' %}"
+            class="btn btn-primary text-white"
+          >{% trans 'Cancel' %}</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
