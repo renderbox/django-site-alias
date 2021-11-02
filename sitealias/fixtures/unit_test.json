@@ -1,0 +1,36 @@
+[
+    {
+        "model": "sites.site",
+        "pk": 1,
+        "fields": {
+            "domain": "www.example.com",
+            "name": "Example Site"
+        }
+    },
+    {
+        "model": "sites.site",
+        "pk": 2,
+        "fields": {
+            "domain": "www.example-two.com",
+            "name": "Example Site Two"
+        }
+    },
+    {
+        "model": "sitealias.sitealias",
+        "pk": 1,
+        "fields": {
+            "domain": "alias-one.example-two.com",
+            "name": "Alias One",
+            "site": 2
+        }
+    },
+    {
+        "model": "sitealias.sitealias",
+        "pk": 2,
+        "fields": {
+            "domain": "alias-two.example-two.com",
+            "name": "Alias Two",
+            "site": 2
+        }
+    }
+]

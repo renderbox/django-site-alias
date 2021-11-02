@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<a class="btn btn-success align-items-center my-4" href="{% url 'alias-create' %}">
+    <i class="fas fa-plus mr-2"></i>
+    {% trans 'Add New Alias' %}
+</a>
+        {% for alias in object_list %}
+       
+        <div class="row">
+            
+            <div class="col">
+                <div class="card shadow mb-4">
+                    <div class="card-body text-gray-800">
+                        <div class="row align-items-center mb-2">
+                            <span class="col-6">{% trans 'Your web address:' %}</span>
+                            <div class="col-6 text-right">
+                                <a href="#" class="fas fa-fw fa-cog text-success" type="button" id="aliasMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></a>
+                                <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="domainMenuButton">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <p class="font-weight-bold">
+                            https://{{ alias.domain }}
+                        </p>
+                        <p class="mb-2">
+                            {% blocktrans %}
+                                Create a CNAME record through your Domain Name Registrar with the following information. Changes may take time to propagate, check with your Domain Name Registrar for those details.
+                            {% endblocktrans %}
+                        </p>
+                        <pre id="alias-domain" class="py-2 px-3 border border-grey-300">{{ alias.domain }}    CNAME   {{object.domain}}   0 0 0 0 274560</pre>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary" href="{{ alias.get_absolute_url }}">
+                            {% trans 'Edit' %}
+                        </a>
+                        <a class="btn btn-danger" href="{% url 'alias-delete' alias.pk %}">
+                           {% trans 'Delete' %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <a class="btn btn-success align-items-center my-4" href="{% url 'alias-create' %}">
+            <i class="fas fa-plus mr-2"></i>
+            {% trans 'Add New Alias' %}
+        </a>
+{% endblock %}

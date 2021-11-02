@@ -13,9 +13,37 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import include, path
 
+from django.conf import settings
+from django.contrib import admin
+from django.urls import path
+from django.conf.urls import url, include
+from sitealias.views import SiteAliasListView, my_view, SiteAliasUpdateView, SiteAliasDeleteView, SiteAliasCreateView
 urlpatterns = [
+    path(
+            "",
+            SiteAliasListView.as_view(),
+            name="alias-list"
+        ),
+    path(
+            "aliases/<int:pk>/update/",
+            SiteAliasUpdateView.as_view(),
+            name="alias-update"
+        ),
+     path(
+            "aliases/<int:pk>/delete/",
+            SiteAliasDeleteView.as_view(),
+            name="alias-delete"
+        ),
+     path(
+            "aliases/create/",
+            SiteAliasCreateView.as_view(),
+            name="alias-create"
+        ),
     path('admin/', admin.site.urls),
 ]
+
+if settings.TESTING:
+    urlpatterns += [
+        path('test/', my_view, name="test_view"),
+    ]
