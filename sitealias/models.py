@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import gettext_lazy as _
 from django.contrib.sites.models import Site, _simple_domain_name_validator, SiteManager, SITE_CACHE, clear_site_cache
+from django.http.request import split_domain_port
 
 class SiteAliasManager(SiteManager):
 
@@ -10,7 +11,7 @@ class SiteAliasManager(SiteManager):
         '''
         This version does an extra check for an alias fist to get the 
         '''
-        host = request.get_host()
+        host, _ = split_domain_port(request.get_host())
       
         try:                                                # First attempt to look up the site by the alias
             if host not in SITE_CACHE:
