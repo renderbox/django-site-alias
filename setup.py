@@ -21,7 +21,7 @@ except ImportError:
 
 package_metadata = {
     'name': 'django-site-aliases',
-    'version': '0.1.0',
+    'version': '0.1.1',
     'description': "A tool to support site aliases that wrap around Django's Site framework",
     'long_description': long_description,
     'url': 'https://github.com/renderbox/django-site-aliases/',
