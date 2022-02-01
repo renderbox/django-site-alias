@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-01 18:20+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: models.py:59
+msgid "domain name"
+msgstr "ドメイン名"
+
+#: models.py:64
+msgid "display name"
+msgstr "表示名"
+
+#: models.py:65
+msgid "Parent Site"
+msgstr "親サイト"
+
+#: models.py:70
+msgid "site alias"
+msgstr "サイトエイリアス"
+
+#: models.py:71
+msgid "site aliases"
+msgstr "サイトエイリアス"
+
+#: templates/sitealias/sitealias_confirm_delete.html:12
+msgid "Delete Site Alias"
+msgstr "サイトエイリアスを削除する"
+
+#: templates/sitealias/sitealias_confirm_delete.html:18
+msgid "<strong>WARNING:</strong>\n"
+"You are about to delete this Custom Domain Name, and as a result "
+"your CNAME record at your Domain Name Registrar service will no "
+"longer function. Please confirm it is also deleted there before proceeding.\n"
+msgstr "<strong>警告：</strong>\n"
+"このカスタムドメイン名を削除しようとしています。その結果、ドメイン名登録事業者サービスのCNAMEレコードが機能しなくなります。"
+"続行する前に、そこでも削除されていることを確認してください。\n"
+
+#: templates/sitealias/sitealias_confirm_delete.html:30
+msgid "Confirm Delete"
+msgstr "削除の確認"
+
+#: templates/sitealias/sitealias_confirm_delete.html:35
+#: templates/sitealias/sitealias_form.html:43
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: templates/sitealias/sitealias_form.html:15
+msgid "Edit Alias"
+msgstr "エイリアスの編集"
+
+#: templates/sitealias/sitealias_form.html:17
+msgid "Create Alias"
+msgstr "エイリアスの作成"
+
+#: templates/sitealias/sitealias_form.html:26
+msgid "Create Site Alias"
+msgstr "サイトエイリアスの作成"
+
+#: templates/sitealias/sitealias_form.html:32
+msgid "You must have access to the Domain Name Registrar "
+"information in order to edit the record for a Custom Domain Name to work.\n"
+msgstr "カスタムドメイン名が機能するようにレコードを編集するには、ドメイン名レジストラ情報にアクセスできる必要があります。\n"
+
+#: templates/sitealias/sitealias_form.html:39
+msgid "Save"
+msgstr "保存する"
+
+#: templates/sitealias/sitealias_list.html:8
+#: templates/sitealias/sitealias_list.html:50
+msgid "Add New Alias"
+msgstr "新しいエイリアスを追加"
+
+#: templates/sitealias/sitealias_list.html:18
+msgid "Your web address:"
+msgstr "あなたのウェブアドレス："
+
+#: templates/sitealias/sitealias_list.html:30
+msgid "Create a CNAME record through your Domain "
+"Name Registrar with the following information. Changes may take time to "
+"propagate, check with your Domain Name Registrar for those details.\n"
+msgstr "次の情報を使用して、ドメイン名レジストラを介してCNAMEレコードを作成します。"
+"変更が反映されるまでに時間がかかる場合があります。詳細については、ドメイン名登録事業者に確認してください。\n"
+
+#: templates/sitealias/sitealias_list.html:38
+msgid "Edit"
+msgstr "編集"
+
+#: templates/sitealias/sitealias_list.html:41
+msgid "Delete"
+msgstr "消去"
+
+#: views.py:18
+msgid "Alias Created Successfully"
+msgstr "エイリアスが正常に作成されました"
+
+#: views.py:24
+msgid "Alias Updated Successfully"
+msgstr "エイリアスが正常に更新されました"
+
+#: views.py:32
+msgid "Alias Deleted Successfully"
+msgstr "エイリアスが正常に削除されました"
