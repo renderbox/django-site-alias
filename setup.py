@@ -21,7 +21,7 @@ except ImportError:
 
 package_metadata = {
     'name': 'django-site-aliases',
-    'version': '0.1.0',
+    'version': '0.1.2',
     'description': "A tool to support site aliases that wrap around Django's Site framework",
     'long_description': long_description,
     'url': 'https://github.com/renderbox/django-site-aliases/',
@@ -45,7 +45,7 @@ setup(
     include_package_data=True,
     python_requires=">=3.6",
     install_requires=[
-        'Django>=3.0,<3.2',
+        'Django>=3.0,<4.1',
         'dj-database-url',
         'django-crispy-forms',
     ],
