@@ -24,7 +24,7 @@ package_metadata = {
     'version': '0.1.2',
     'description': "A tool to support site aliases that wrap around Django's Site framework",
     'long_description': long_description,
-    'url': 'https://github.com/renderbox/django-site-aliases/',
+    'url': 'https://github.com/renderbox/django-site-alias/',
     'author': 'Grant Viklund',
     'author_email': 'renderbox@gmail.com',
     'license': 'MIT license',
